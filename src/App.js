@@ -53,15 +53,6 @@ const handleSearch = () => {
         <h1><b> Digite seu CEP </b></h1>
         <div className='conteudo'>
          <div className='input'>
-         {/* <input type="text"  placeholder="Digite um Cep" onChange={(e) => setSearch(e.target.value)} /> */}
-
-           {/* <p>{`Endereço : ${logradouro}`}</p>
-            <p>{'Complemento = '+complemento}</p>
-            { <p>{`Bairro : ${bairro}`}</p> }
-            <p>{`Cidade : ${localidade}`}</p>
-            <p>{`Unidade federativa : ${uf}`}</p> */}
-            {/* <button onClick={handleSearch}>Buscar</button>  */}
-
             <div className='form'> 
               <input type="text"  placeholder="Digite um Cep" onChange={(e) => setSearch(e.target.value)} />
               <input type="text"  placeholder="logradouro" value={logradouro} /> 
