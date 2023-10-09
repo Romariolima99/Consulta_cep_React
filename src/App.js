@@ -46,6 +46,17 @@ const handleSearch = () => {
     });
 }
 
+function limparFormulario(){
+                                                // Função para Limpar o campo
+  document.getElementById('Cep').value=''; 
+  document.getElementById('logradouro').value=''; 
+  document.getElementById('bairro').value=''; 
+  document.getElementById('localidade').value=''; 
+  document.getElementById('bairro').value=''; 
+  document.getElementById('uf').value=''; 
+}
+
+
   return (
 
     <div className="container">
@@ -54,22 +65,18 @@ const handleSearch = () => {
         <div className='conteudo'>
          <div className='input'>
             <div className='form'> 
-              <input type="text"  placeholder="Digite um Cep" onChange={(e) => setSearch(e.target.value)} />
-              <input type="text"  placeholder="logradouro" value={logradouro} /> 
-              <input type="text"  placeholder="bairro"  value={bairro} /> 
-              <input type="text"  placeholder="localidade"  value={localidade}/>
-              <input type="text"  placeholder="uf" value={uf}/> 
+              <input type="text"  id='Cep' placeholder="Digite um Cep" onChange={(e) => setSearch(e.target.value)} />
+              <input type="text"  id='logradouro' placeholder="logradouro" value={logradouro} /> 
+              <input type="text"  id='bairro' placeholder="bairro"  value={bairro} /> 
+              <input type="text"  id='localidade' placeholder="localidade"  value={localidade}/>
+              <input type="text"  id='uf' placeholder="uf" value={uf}/> 
               <button onClick={handleSearch}>Buscar</button>
+              <button className='limpar' onClick={limparFormulario}>Limpar Dados</button>
             </div>
-          </div>
-            
+          </div> 
         </div>
        </div>
      </div>
-
-
-
-
   );
 }
 

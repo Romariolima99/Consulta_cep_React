@@ -33,4 +33,4 @@ Siga estas etapas para configurar e executar a aplicação:
 # Funcionalidades
 - Consulta de CEP: Insira um CEP no campo de entrada e clique em "Consultar" para obter informações de endereço.
 
- <img src="https://i.imgur.com/iSg9fFJ.png" alt="GIF" data-canonical-src="https://i.imgur.com/iSg9fFJ.png" style="max-width: 50%;">
+ <img src="https://i.imgur.com/PkUztf6.png" alt="GIF" data-canonical-src="https://i.imgur.com/PkUztf6.png" style="max-width: 50%;">
