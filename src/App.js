@@ -24,24 +24,16 @@ const handleSearch = () => {
     notifyError();
   }
 
-  if(search.length >= 9) { //verifica se o campo esta enviando nais de 9 digitos
-    notifyAlert();
-  }
-
-
   axios.get(`https://viacep.com.br/ws/${search}/json/`)
     .then((success) => {
-      if(success.data.erro ===  true  )  { // verifica se o campo foi enviado com um cep invalido  || trata o retorno true enviado pela API
-        notifyCepInvalido();
+      if(success?.data?.erro &&  success?.data?.erro === true  )  { // verifica se o campo foi enviado com um cep invalido  || trata o retorno true enviado pela API
+        return notifyCepInvalido();
       }
-      // if (success.erro === 400) {
-      //   notifyStatus400();
-      // }
+      
       if (success.status === 200) {
         notifySucess();
       }
 
-      console.log("Executando SUCCESS", success);
       setLogradouro(success.data.logradouro);
       setBairro(success.data.bairro);
       setLocalidade(success.data.localidade);
@@ -49,15 +41,17 @@ const handleSearch = () => {
      
     })
     .catch((error) => {
-      console.log("Executando CATCH", error.data);
       setErr(erro);
       setLogradouro("");
       setBairro("");
       setLocalidade("");
       setUf("");
+
+      notifyStatus400();
+
+
     })
     .finally(() => {
-      console.log("Executando FINALLY");
        setSearch("")
     });
 }
@@ -77,25 +71,26 @@ function notifyError(){
 
 }
 
-function notifyAlert(){
-  toast.warn("Numero de caracteres invalidos")
+// function notifyAlert(){
+//   toast.warn("Numero de caracteres invalidos")
 
-}
+// }
 
 function notifyCepInvalido(){
   toast.error("Digite um Cep Valido")
 
 }
 
-// function notifyStatus400(){
-//   toast.error("Cep Invalido")
+function notifyStatus400(){
+  toast.error("Cep Invalido")
 
-// }
+}
 
 const notifySucess = () =>  {
   toast.success("Consulta realizada com sucesso", {
   className: 'custom-toast',
 
+  
 })
 };
 
@@ -108,11 +103,11 @@ const notifySucess = () =>  {
         <div className='conteudo'>
          <div className='input'>
             <div className='form'> 
-              <input type="text"  id='Cep' placeholder="Digite um Cep" onChange={(e) => setSearch(e.target.value)} />
-              <input type="text"  id='logradouro' placeholder="Logradouro" value={logradouro} /> 
-              <input type="text"  id='bairro' placeholder="Bairro"  value={bairro} /> 
-              <input type="text"  id='localidade' placeholder="Localidade"  value={localidade}/>
-              <input type="text"  id='uf' placeholder="Uf" value={uf}/> 
+              <input type="text"  id='Cep' placeholder="Digite um Cep" onChange={(e) => setSearch(e.target.value)} value={search} />
+              <input type="text"  id='logradouro' placeholder="Logradouro" value={logradouro} readOnly/> 
+              <input type="text"  id='bairro' placeholder="Bairro"  value={bairro} readOnly/> 
+              <input type="text"  id='localidade' placeholder="Localidade"  value={localidade} readOnly/>
+              <input type="text"  id='uf' placeholder="Uf" value={uf} readOnly/> 
               <button onClick={handleSearch}>Buscar</button>
               <button className='limpar' onClick={limparFormulario}>Limpar Dados</button>
             </div>
