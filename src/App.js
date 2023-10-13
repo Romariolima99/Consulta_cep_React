@@ -51,19 +51,17 @@ const handleSearch = () => {
 
 
     })
-    .finally(() => {
-       setSearch("")
-    });
+    
 }
 
 function limparFormulario(){
                                               
-  document.getElementById('Cep').value=''; 
-  document.getElementById('logradouro').value=''; 
-  document.getElementById('bairro').value=''; 
-  document.getElementById('localidade').value=''; 
-  document.getElementById('bairro').value=''; 
-  document.getElementById('uf').value=''; 
+  setLogradouro('')
+  setBairro('')
+  setLocalidade('')
+  setUf('')
+  setSearch('')
+
 }
 
 function notifyError(){
@@ -96,7 +94,7 @@ const notifySucess = () =>  {
 
   return (
     <>
-      <ToastContainer  position="top-center" />
+      <ToastContainer  position="top-center" bodyStyle={{width:'100vw'}} />
     <div className="container">
        <div className="item">
         <h1><b> Digite seu CEP </b></h1>
